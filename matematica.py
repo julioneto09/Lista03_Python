@@ -30,38 +30,89 @@ def dividir(x,y):
             break
     return(div)
 
-def exponencial(x,y):
+def potencia(x,y):
     '''Retorna o resultado de 'x' elevado a 'y' '''
-    exp = x**y
-    return(exp)
+    pot = x**y
+    return(pot)
 
+def pi():
+    '''Retorna o número pi'''
+    n_pi = 3.141592654
+    return(n_pi)
+
+def e():
+    '''Retorna o número de Euler'''
+    n_e = 2.718281828
+    return(n_e)
+
+def fatorial(x):
+    '''Retorna o fatorial do número 'x' '''
+    n=1
+    if x <0:
+        print('Não existe fatorial de número negativo!')
+        exit()
+    elif x<1:
+        f = 1
+    else:
+        for k in range(1,x+1):
+            f = n*k
+            n=f
+    return(f)
+
+def euler(x):
+    '''Retorna o número de euler elevado ao numero 'x' '''
+    soma = 0
+    for n in range(0,30):
+        e_x = soma + ((x**n)/fatorial(n))
+    return(e_x)
+
+'''
 def logaritmo(x,y):
-    '''Retorna o logaritmo do numero 'x' na base 'y' '''
+    #Retorna o logaritmo do numero 'x' na base 'y' 
     log = math.log(x,y)
     return(log)
-
+'''
 def seno(x):
-    '''Dado um angulo 'x' em graus, retorna o valor de seu seno'''
-    a = math.radians(x)
-    sen = math.sin(a)
+    #Dado um angulo 'x' em graus, retorna o valor de seu seno
+    sen = 0
+    angulo_radiano = multiplicar(x, dividir(pi(),180))
+    for k in range(0,50):
+        o1 = potencia(-1,k)
+        o2 = potencia(angulo_radiano,somar(multiplicar(2,k),1))
+        o3 = multiplicar(o1,o2)
+        o4 = fatorial(somar(multiplicar(2,k),1))
+        o5 = dividir(o3,o4)
+
+        sen = somar(sen,o5)
     return(sen)
 
 def cosseno(x):
-    '''Dado um angulo 'x' em graus, retorna o valor de seu cosseno'''
-    a = math.radians(x)
-    cos = math.cos(a)
+    #Dado um angulo 'x' em graus, retorna o valor de seu cosseno
+    cos=0
+    angulo_radiano = multiplicar(x, dividir(pi(),180))
+    for k in range(0,50):
+        #cos = cos + potencia(-1,k) * potencia(angulo_radiano,2*k)/fatorial(2*k)
+        cos = somar(cos,dividir(multiplicar(potencia(-1,k),potencia(angulo_radiano,multiplicar(2,k))),fatorial(multiplicar(2,k))))
     return(cos)
 
 def tangente(x):
-    '''Dado um angulo 'x' em graus, retorna o valor da sua tangente'''
-    a = math.radians(x)
-    tan = math.tan(a)
+    #Dado um angulo 'x' em graus, retorna o valor da sua tangente
+    tan = dividir(seno(x),cosseno(x))
+
     return(tan)
 
 
+angulo= float(input('informe o angulo em graus: '))
 
+senoo = seno(angulo)
+print(type(senoo))
+print(round(senoo,4))
 
+cossenoo = cosseno(angulo)
+print(round(cossenoo,4))
 
+tangentee = tangente(angulo)
+print(round(tangentee,4))
 '''
 Soma com varios termos
 qte = int(input('Informe quantos termos da soma: '))
@@ -72,8 +123,4 @@ for num in range(kk):
     k=w
     
 print(w)
-'''
-
-'''
-
 '''
