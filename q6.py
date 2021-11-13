@@ -5,8 +5,8 @@ Adicione na última linha de cada página o número da página atual e o nome do
 original.
 '''
 
-entrada = open('texto_in.txt','r')#o texto_in.txt é um lorem ipsum
-saida = open('texto_out.txt', 'w')
+entrada = open('texto_in(Q6).txt','r')#o texto_in.txt é um lorem ipsum
+saida = open('texto_out(Q6).txt', 'w')
 
 caractere = int(76)#número máximo de caracteres por linha
 linha = int(59)#número máximo de linhas por página(não é 60 pq a ultima linha tem q ter o numero da página)
@@ -27,6 +27,3 @@ for k in range(310):#'310 é um número aleatorio, só para ter uma qunatidade c
 entrada.close()
 saida.close()
 print('concluido')
-
-
-
