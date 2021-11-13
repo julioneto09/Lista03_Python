@@ -79,5 +79,5 @@ while True:
         print(f'\nO seno do ângulo {x}° é: {round(sen,4)}\n')
         time.sleep(3)
     else:
-        print('sair')
+        print('Saindo...')
         break
