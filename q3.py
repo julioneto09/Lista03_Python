@@ -8,7 +8,7 @@ um menu para que o usuário possa escolher o que ele deseja calcular.'''
 import time, matematica as ma
 
 while True:
-    print('\tOperações: \n1. Área de um retângulo\n2. Área do triângulo\n3. Volume de uma caixa\n4. Divisão\nOutro numero para sair')
+    print('\tOperações: \n1. Área de um retângulo\n2. Área do triângulo\n3. Área do círculo\n4. Seno\nOutro numero para sair')
     calc=int(input('\nQue operação deseja realizar: '))
 
     if calc==1:
@@ -56,30 +56,28 @@ while True:
     elif calc==3:
         while True:
             try:
-                x=float(input('\nLargura: '))
+                x=float(input('\nRaio do círculo: '))
             except ValueError:
                 print('Digite um número!')
                 continue
             else:
                 break
+        a = ma.multiplicar(ma.pi(),ma.potencia(x,2))
+        print(f'\nÁrea da circunferência com raio {x} m é: {a} m²\n')
+        time.sleep(3)
+
+    elif calc==4:
         while True:
             try:
-                y=float(input('Altura: '))
+                x=float(input('\nInforme o ângulo: '))
             except ValueError:
                 print('Digite um número!')
                 continue
             else:
-                break           
-        a = ma.multiplicar(x,y)
-        b = ma.dividir(a,2)
-        print(f'\nÁrea do triângulo com base {x} m e altura {y} m é: {b} m²\n')
+                break 
+        sen = ma.seno(x)
+        print(f'\nO seno do ângulo {x}° é: {round(sen,4)}\n')
         time.sleep(3)
-#Criar outras operações
-
-    elif calc==4:
-        x=float(input('\nPrimeiro numero: '))
-        y=float(input('Segundo  numero: '))
-        print('Divisão:', ma.dividir(x,y))
     else:
         print('sair')
         break

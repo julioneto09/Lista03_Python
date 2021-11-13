@@ -5,7 +5,9 @@ da temperatura for superior a 40°C. Desta forma, no e-mail deverá informar qua
 temperatura que foi registrada, o horário e lembrar que é um ALERTA DE
 TEMPERATURA. Use a biblioteca smtplib e time.
 '''
-import smtplib, random, time, getpass
+from getpass import getpass
+import smtplib, random, time
+
 
 destino = input("Informe o e-mail que receberá os alertas: ")
 v = int(input('Informe quantas verificação serão feitas: '))
@@ -13,7 +15,7 @@ i = int(input('Informe o intervalo das verificações, em segundos: '))
 
 '''Para apresentar o código na sala, e não mostrar minha senha'''
 meu_email = input('\nInforme seu email, o que enviará os dados: ')
-senha = getpass.getpass(prompt='Digite a senha do seu email para enviar os dados: ')
+senha = getpass('Digite a senha do seu email para enviar os dados: ')#getpass.getpass
 
 maior=[]
 tempo=[]

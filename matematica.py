@@ -37,7 +37,7 @@ def potencia(x,y):
 
 def pi():
     '''Retorna o número pi'''
-    n_pi = 3.141592654
+    n_pi = 3.14159265359
     return(n_pi)
 
 def e():
@@ -61,19 +61,17 @@ def fatorial(x):
 
 def euler(x):
     '''Retorna o número de euler elevado ao numero 'x' '''
-    soma = 0
-    for n in range(0,30):
-        e_x = soma + ((x**n)/fatorial(n))
+    '''Como não pode usar a biblioteca math, escrevi 'e^x' (bem como seno, cosseno e tangente), 
+    como séries de McLaurin ('for k in range()' faz o somatório)'''
+    e_x = 0
+    for k in range(0,50):
+        o1 = potencia(x,k)
+        o2 = dividir(o1,fatorial(k))
+        e_x = somar(e_x,o2)
     return(e_x)
 
-'''
-def logaritmo(x,y):
-    #Retorna o logaritmo do numero 'x' na base 'y' 
-    log = math.log(x,y)
-    return(log)
-'''
 def seno(x):
-    #Dado um angulo 'x' em graus, retorna o valor de seu seno
+    '''Dado um angulo 'x' em graus, retorna o valor de seu seno'''
     sen = 0
     angulo_radiano = multiplicar(x, dividir(pi(),180))
     for k in range(0,50):
@@ -97,22 +95,25 @@ def cosseno(x):
 
 def tangente(x):
     #Dado um angulo 'x' em graus, retorna o valor da sua tangente
-    tan = dividir(seno(x),cosseno(x))
+    if abs(cosseno(x))<0.0001:
+        tan = print('Tende ao infinito!')
+        exit()
+    else:
+        tan = dividir(seno(x),cosseno(x))
 
     return(tan)
 
 
-angulo= float(input('informe o angulo em graus: '))
+'''
+def logaritmo(x,y):
+    #Retorna o logaritmo do numero 'x' na base 'y' 
+    log = math.log(x,y)
+    return(log)
+'''
 
-senoo = seno(angulo)
-print(type(senoo))
-print(round(senoo,4))
 
-cossenoo = cosseno(angulo)
-print(round(cossenoo,4))
 
-tangentee = tangente(angulo)
-print(round(tangentee,4))
+
 '''
 Soma com varios termos
 qte = int(input('Informe quantos termos da soma: '))
