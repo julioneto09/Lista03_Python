@@ -34,8 +34,8 @@ pag.write('chrome')
 pag.press('enter')
 time.sleep(20)
 
-pag.moveTo(55,85)#clicar no link da aula
-pag.leftClick()
+pag.moveTo(55,85)
+pag.leftClick()#Mover o cursor até uma posição específica, e clicar no link da aula
 time.sleep(10)
 
 pag.click(x=490, y=600)#desligar a câmera
@@ -44,5 +44,5 @@ pag.click(x=405, y=600)#desligar o microfone
 
 pag.click(x=975, y=475)#participar
 
-
+pag.alert('Processo finalizado!')
 
