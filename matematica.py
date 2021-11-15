@@ -1,5 +1,14 @@
 '''Módulo contendo operções matemáticas'''
-import math
+
+def teste(x):#Teste para saber se x(o que foi digitado) é um número
+        while True:
+            try:
+                x
+            except ValueError:
+                print('Digite um número válido!')
+                continue
+            else:
+                break
 
 def somar(x,y):
     '''Dados dois numeros ('x' e 'y'), a função retorna a soma destes números '''
