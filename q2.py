@@ -8,8 +8,28 @@ TEMPERATURA. Use a biblioteca smtplib e time.
 from getpass import getpass
 import smtplib, random, time
 
+'''Criando uma lista de destinatários'''
+destino=[]
+while True:
+    print('\n1. Adicionar email\n2. Finalizar')
+    op=int(input('Que operação deseja realizar: '))
+    if op==1:
+        while True:
+            try:
+                de=input('Informe um email de destino: ')
+                destino.append(de)
+            except ValueError:
+                print('Digite um número!')
+                continue
+            else:
+                break
+    elif op == 2:
+        print('saindo...')
+        break
+    else:
+        print('1 ou 2')
+        continue
 
-destino = input("Informe o e-mail que receberá os alertas: ")
 v = int(input('Informe quantas verificação serão feitas: '))
 i = int(input('Informe o intervalo das verificações, em segundos: '))
 
@@ -52,4 +72,5 @@ if maior != []:
             #enviando o email(origem, destino, Assunto e mensagem)
             print('Email enviado!')
         except:
+            #Quando não consegue enviar o email (por N motivos que eu não entendi, inclusive na 'mensagem')
             print('Erro ao enviar e-mail')
