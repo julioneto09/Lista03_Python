@@ -13,10 +13,12 @@ destino = input("Informe o e-mail que receberá os alertas: ")
 v = int(input('Informe quantas verificação serão feitas: '))
 i = int(input('Informe o intervalo das verificações, em segundos: '))
 
-'''Para apresentar o código na sala, e não mostrar minha senha'''
-meu_email = input('\nInforme seu email, o que enviará os dados: ')
-senha = getpass('Digite a senha do seu email para enviar os dados: ')#getpass.getpass
 
+meu_email = input('\nInforme seu email, o que enviará os dados: ')
+senha = getpass('Digite a senha do seu email para enviar os dados: ')
+'''A biblioteca/método getpass() tem a mesma função do input(armazenar a informação digitada), porem,
+o conteudo digitado pelo teclado não é exibido no terminal. Uma forma de 'segurança', 
+para apresentar o código na sala, e não mostrar a senha do email'''
 maior=[]
 tempo=[]
 
@@ -34,20 +36,20 @@ if maior != []:
     for c in range(len(maior)):
         #print(f'\nTemperatura de: {round(maior[c],2)}°C as {tempo[c]}')
         '''Enviando e-mail:'''
+        '''peguei maior parte da internet(stackoverflow), então, não sei com maiores detalhes 
+        o que cada método realiza'''
         try:
-            email = smtplib.SMTP('smtp.gmail.com', 587)
+            email = smtplib.SMTP('smtp.gmail.com', 587)#iniciando o servidor do gmail
             email.ehlo()
             email.starttls()
-            #meu_email = 'julioneto09@gmail.com'
-            #senha = ''
-            email.login(meu_email, senha)
-            '''Se em "mensagem" tiver os caracteres "°" e ":", a mensagem enviada é vazia/nula,
-            por isso, sua sintaxe está mais "complicada" que o normal'''
+            email.login(meu_email, senha)#fazendo o login
+            '''Se em "mensagem" tiver os caracteres especiais (como "°" e ":", mesmo usando o padrão unicode), 
+            a mensagem enviada é vazia/nula, por isso, sua sintaxe desse jeito 'desorganizado' '''
             mensagem = 'Temperatura de {} graus, as {}h e {}min e {}s'\
                 .format(round(maior[c],2), time.strftime('%H'), time.strftime('%M'), time.strftime('%S'))          
                
             email.sendmail(meu_email,destino,'Subject: Aletra de temperatura\n{}'.format(mensagem))
-            #smtpObj.quit()
+            #enviando o email(origem, destino, Assunto e mensagem)
             print('Email enviado!')
         except:
             print('Erro ao enviar e-mail')
